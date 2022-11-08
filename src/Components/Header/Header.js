@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 const Header = () => {
-    const routeItems = <><li><Link>My Review</Link></li>
-        <li><Link to="/addService">Add Service</Link></li>
+    const { user, logUserOut } = useContext(AuthContext)
+    const handleLogUserOut = () => {
+        logUserOut()
+            .then(() => { })
+            .catch(() => { })
+    }
+    const routeItems = <><li className={`${user ? "" : "hidden"}`}><Link>My Review</Link></li>
+        <li className={`${user ? "" : "hidden"}`}><Link to="/addService">Add Service</Link></li>
         <li><Link>Blog</Link></li>
-        <Link><button className='btn btn-outline btn-error rounded-lg ml-3'>Log Out</button></Link></>
+        <Link className={`${user ? "" : "hidden"}`}><button className='btn btn-outline btn-error rounded-lg ml-3' onClick={handleLogUserOut}>Log Out</button></Link></>
 
     return (
         <div className="navbar bg-base-100 lg:px-32">
@@ -26,7 +33,14 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"> <button className='btn btn-outline btn-warning rounded-lg'>Login</button></Link>
+                {
+                    user ? <div className="avatar">
+
+                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={user.photoURL} alt="img" />
+                        </div>
+                    </div> : <Link to="/login"> <button className='btn btn-outline btn-warning rounded-lg'>Login</button></Link>
+                }
             </div>
         </div>
     );
