@@ -76,16 +76,13 @@ const Home = () => {
 
             <div>
                 <h2 className='text-4xl my-10'>About</h2>
-                <div className="card md:card-side bg-base-100 shadow-xl md:mx-32">
-                    <figure><img src={img4} alt="Album" className='h-96 w-full' /></figure>
+                <div className="card lg:card-side bg-base-100 shadow-xl md:mx-32">
+                    <figure><img src={img4} alt="Album" className=' w-full' /></figure>
                     <div className="card-body">
-                        <h2 className="card-title text-3xl">I've been</h2>
-                        <h2 className="card-title text-3xl">providing customers</h2>
-                        <h2 className="card-title text-3xl">great services</h2>
-                        <p></p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Listen</button>
-                        </div>
+                        <h2 className="card-title text-2xl">I've been providing</h2>
+                        <h2 className="card-title text-2xl">customers great services</h2>
+                        <p className='text-left'>I'm Thomas Frantz, your newest friend, the man behind the camera and a professional third wheeler. I am so happy you have found yourself here on my site! I'm a photographer. My heart and soul come alive when I photograph the beauty of human connection in its truest, rawest form.</p>
+
                     </div>
                 </div>
             </div>
