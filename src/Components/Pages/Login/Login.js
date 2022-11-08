@@ -8,6 +8,7 @@ const Login = () => {
     const { logUserIn, googleSignin } = useContext(AuthContext)
 
     const [error, setError] = useState("")
+
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
@@ -15,6 +16,24 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+
+        logUserIn(email, password)
+            .then(result => {
+                const user = result.user
+                console.log("log in successfull", user)
+                form.reset()
+                navigate(from, { replace: true })
+                setError("")
+
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+                toast.error('Sign in failed!');
+            })
     }
 
     const handleGoogleSignin = () => {
