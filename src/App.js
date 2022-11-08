@@ -8,6 +8,7 @@ import AddService from './Components/Pages/AddService/AddService';
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Login from './Components/Pages/Login/Login';
 import Services from './Components/Pages/Services/Services';
+import SignUp from './Components/Pages/SignUp/SignUp';
 
 
 
@@ -41,6 +42,10 @@ function App() {
         {
           path: "/login",
           element: <Login></Login>
+        },
+        {
+          path: "/signup",
+          element: <SignUp></SignUp>
         },
       ]
     }
