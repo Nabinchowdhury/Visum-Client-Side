@@ -1,11 +1,50 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
+    const { createNewUser, googleSignin, setLoading, updateUserProfile } = useContext(AuthContext)
     const [error, setError] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
 
+
+        const name = form.name.value
+        const photoURL = form.photoURL.value
+        const profile = { displayName: name, photoURL: photoURL }
+        createNewUser(email, password)
+            .then(result => {
+                const user = result.user
+                console.log("log in successfull", user)
+                form.reset()
+                updateUserProfile(profile)
+                    .then(() => { })
+                    .catch(() => { })
+                setError("")
+                setLoading(false)
+                toast.success('Successfully Signed in!');
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+                toast.error('Sign in failed!');
+            })
+    }
+
+    const handleGoogleSignin = () => {
+        googleSignin()
+            .then(result => {
+                const user = result.user
+                console.log("Sign in Successfull", user)
+                toast.success('Successfully Signed in!');
+            }).catch(error => {
+                setError(error.message)
+                toast.error('Sign in failed!');
+            })
     }
     return (
         <div >
@@ -57,7 +96,7 @@ const SignUp = () => {
 
             <div className='flex flex-col items-center mx-10'>
 
-                <button className='btn btn-warning w-full sm:w-1/2 lg:w-1/3 my-2 font-medium' >Sign in with Google</button>
+                <button className='btn btn-warning w-full sm:w-1/2 lg:w-1/3 my-2 font-medium' onClick={handleGoogleSignin}>Sign in with Google</button>
             </div>
         </div >
 

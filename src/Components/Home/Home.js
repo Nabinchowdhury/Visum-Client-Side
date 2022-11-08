@@ -72,6 +72,24 @@ const Home = () => {
                     </div>
                 </PhotoProvider>
             </div>
+
+
+            <div>
+                <h2 className='text-4xl my-10'>About</h2>
+                <div className="card md:card-side bg-base-100 shadow-xl md:mx-32">
+                    <figure><img src={img4} alt="Album" className='h-96 w-full' /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title text-3xl">I've been</h2>
+                        <h2 className="card-title text-3xl">providing customers</h2>
+                        <h2 className="card-title text-3xl">great services</h2>
+                        <p></p>
+                        <div className="card-actions justify-end">
+                            <button className="btn btn-primary">Listen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 };

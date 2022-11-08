@@ -23,14 +23,12 @@ const Login = () => {
         logUserIn(email, password)
             .then(result => {
                 const user = result.user
-                console.log("log in successfull", user)
                 form.reset()
                 navigate(from, { replace: true })
                 setError("")
 
             })
             .catch(error => {
-                console.error(error)
                 setError(error.message)
                 toast.error('Sign in failed!');
             })
@@ -40,7 +38,6 @@ const Login = () => {
         googleSignin()
             .then(result => {
                 const user = result.user
-                console.log("Sign in Successfull", user)
                 navigate(from, { replace: true })
                 toast.success('Successfully Signed in!');
             }).catch(error => {
