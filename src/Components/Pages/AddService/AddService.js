@@ -36,7 +36,7 @@ const AddService = () => {
             .then(data => {
                 if (data.acknowledged) {
                     alert(" Successfull")
-                    // form.reset()
+                    form.reset()
                 }
             }).catch(err => console.log(err))
     }

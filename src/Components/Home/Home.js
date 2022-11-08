@@ -16,10 +16,13 @@ import img12 from "../images/car-9.jpg"
 import img13 from "../images/fashion-agency-1.jpg"
 import img14 from "../images/fashion-agency-6.jpg"
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import ServiceCard from '../Shared/ServiceCard';
+import { Link } from 'react-router-dom';
 const Home = () => {
     const images = [img1, img5, img11, img4, img2, img6, img7, img10, img3, img12, img13, img4, img9, img14]
 
     const [services, setServices] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/services')
             .then(res => res.json())
@@ -40,6 +43,15 @@ const Home = () => {
                         </h1>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-32'>
+                    {
+                        services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                    }
+                </div>
+                <Link to="/services"> <button className='btn btn-warning'>See All Services</button></Link>
             </div>
 
             <div>

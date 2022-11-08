@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Components/Home/Home';
 import Main from './Components/Layout/Main';
 import AddService from './Components/Pages/AddService/AddService';
+import Services from './Components/Pages/AddService/Services/Services';
 
 
 
@@ -16,6 +17,14 @@ function App() {
         {
           path: "/",
           element: <Home></Home>
+        },
+        {
+          path: "/services",
+          element: <Services></Services>
+        },
+        {
+          path: "/services/:id",
+          element: <Services></Services>
         },
         {
           path: "/blog",
