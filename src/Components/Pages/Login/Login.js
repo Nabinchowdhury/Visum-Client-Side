@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 
 const Login = () => {
+    const { logUserIn, googleSignin } = useContext(AuthContext)
 
     const [error, setError] = useState("")
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-
     }
+
+    const handleGoogleSignin = () => {
+        googleSignin()
+            .then(result => {
+                const user = result.user
+                console.log("Sign in Successfull", user)
+                navigate(from, { replace: true })
+                toast.success('Successfully Signed in!');
+            }).catch(error => {
+                setError(error.message)
+                toast.error('Sign in failed!');
+            })
+    }
+
     return (
         <div >
             <form className="hero mt-20 mb-10" onSubmit={handleSubmit}>
@@ -46,7 +67,7 @@ const Login = () => {
 
             <div className='flex flex-col items-center mx-10'>
 
-                <button className='btn btn-warning w-full sm:w-1/2 lg:w-1/3 my-2 font-medium' >Sign in with Google</button>
+                <button className='btn btn-warning w-full sm:w-1/2 lg:w-1/3 my-2 font-medium' onClick={handleGoogleSignin}>Sign in with Google</button>
             </div>
         </div >
 

@@ -1,4 +1,5 @@
 
+import { Toaster } from 'react-hot-toast';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home/Home';
@@ -9,6 +10,7 @@ import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Login from './Components/Pages/Login/Login';
 import Services from './Components/Pages/Services/Services';
 import SignUp from './Components/Pages/SignUp/SignUp';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 
 
@@ -37,7 +39,7 @@ function App() {
         },
         {
           path: "/addService",
-          element: <AddService></AddService>
+          element: <PrivateRoute><AddService></AddService></PrivateRoute>
         },
         {
           path: "/login",
@@ -53,6 +55,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={routes}></RouterProvider>
+      <Toaster />
     </div>
   );
 }
