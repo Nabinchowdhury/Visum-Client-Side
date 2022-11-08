@@ -1,8 +1,9 @@
 import React from 'react';
+import useTitle from '../../Hooks/useTitle';
 
 const AddService = () => {
     const currentdate = new Date()
-    console.log(currentdate)
+    useTitle("Add Title")
     const email = "thomas@frantz.com"
 
     const handleAddService = (event) => {

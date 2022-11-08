@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 
 const Login = () => {
@@ -13,6 +14,7 @@ const Login = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
 
+    useTitle("login")
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -47,7 +49,7 @@ const Login = () => {
     }
 
     return (
-        <div >
+        <div className='mb-32'>
             <form className="hero mt-20 mb-10" onSubmit={handleSubmit}>
                 <div className="card w-full max-w-lg shadow-2xl bg-base-100">
                     <div className="card-body bg-white">

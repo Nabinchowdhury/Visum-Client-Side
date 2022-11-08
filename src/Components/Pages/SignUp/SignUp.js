@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const SignUp = () => {
     const { createNewUser, googleSignin, setLoading, updateUserProfile } = useContext(AuthContext)
     const [error, setError] = useState("")
     const navigate = useNavigate()
+    useTitle("Sign Up")
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -50,7 +52,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div >
+        <div className='mb-32'>
             <form className="hero mt-20 mb-10 " onSubmit={handleSubmit}>
                 <div className="card w-full max-w-lg shadow-2xl bg-base-100">
                     <div className="card-body bg-white">
