@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home/Home';
 import Main from './Components/Layout/Main';
+import AddService from './Components/Pages/AddService/AddService';
 
 
 
@@ -19,6 +20,10 @@ function App() {
         {
           path: "/blog",
           element: <Home></Home>
+        },
+        {
+          path: "/addService",
+          element: <AddService></AddService>
         },
       ]
     }

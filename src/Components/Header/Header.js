@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const routeItems = <><li><Link>Item 1</Link></li>
-        <li><Link>Parent</Link></li>
-        <li><Link>Item 3</Link></li></>
+    const routeItems = <><li><Link>My Review</Link></li>
+        <li><Link to="/addService">Add Service</Link></li>
+        <li><Link>Blog</Link></li>
+        <Link><button className='btn btn-outline btn-error rounded-lg ml-3'>Log Out</button></Link></>
 
     return (
         <div className="navbar bg-base-100 lg:px-32">
@@ -25,7 +26,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className='btn btn-outline btn-warning rounded'>Login</button>
+                <button className='btn btn-outline btn-warning rounded-lg'>Login</button>
             </div>
         </div>
     );
