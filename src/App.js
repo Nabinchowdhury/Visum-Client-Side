@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import Main from './Components/Layout/Main';
 import AddService from './Components/Pages/AddService/AddService';
 import Services from './Components/Pages/AddService/Services/Services';
+import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 
 
 
@@ -13,6 +14,7 @@ function App() {
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
