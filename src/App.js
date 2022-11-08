@@ -6,6 +6,7 @@ import Main from './Components/Layout/Main';
 import AddService from './Components/Pages/AddService/AddService';
 
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
+import Login from './Components/Pages/Login/Login';
 import Services from './Components/Pages/Services/Services';
 
 
@@ -36,6 +37,10 @@ function App() {
         {
           path: "/addService",
           element: <AddService></AddService>
+        },
+        {
+          path: "/login",
+          element: <Login></Login>
         },
       ]
     }
