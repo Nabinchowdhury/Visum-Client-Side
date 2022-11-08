@@ -19,7 +19,9 @@ const Home = () => {
     const images = [img1, img5, img11, img4, img2, img6, img7, img10, img3, img12, img13, img4, img9, img14]
     return (
         <div>
-
+            <div>
+                <img src="https://fourstudio.in/img/photography.jpg" alt="" />
+            </div>
 
             <div>
                 <div className='my-10 font-serif'>
