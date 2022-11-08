@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Home.css"
 import 'react-photo-view/dist/react-photo-view.css';
 import img1 from "../images/family-1.jpg"
@@ -18,6 +18,13 @@ import img14 from "../images/fashion-agency-6.jpg"
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 const Home = () => {
     const images = [img1, img5, img11, img4, img2, img6, img7, img10, img3, img12, img13, img4, img9, img14]
+
+    const [services, setServices] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, [])
     return (
         <div>
             <div className="relative w-full my-10">
