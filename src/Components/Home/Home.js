@@ -74,14 +74,14 @@ const Home = () => {
             </div>
 
 
-            <div>
+            <div className='my-32'>
                 <h2 className='text-4xl my-10'>About</h2>
                 <div className="card lg:card-side bg-base-100 shadow-xl md:mx-32">
                     <figure><img src={img4} alt="Album" className=' w-full' /></figure>
                     <div className="card-body">
                         <h2 className="card-title text-2xl">I've been providing</h2>
                         <h2 className="card-title text-2xl">customers great services</h2>
-                        <p className='text-left'>I'm Thomas Frantz, your newest friend, the man behind the camera and a professional third wheeler. I am so happy you have found yourself here on my site! I'm a photographer. My heart and soul come alive when I photograph the beauty of human connection in its truest, rawest form.</p>
+                        <p className='text-left lg:mt-10'>I'm Thomas Frantz, your newest friend, the man behind the camera and a professional third wheeler. I am so happy you have found yourself here on my site! I'm a photographer. My heart and soul come alive when I photograph the beauty of human connection in its truest, rawest form.</p>
 
                     </div>
                 </div>
