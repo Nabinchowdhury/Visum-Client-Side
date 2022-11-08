@@ -4,8 +4,9 @@ import './App.css';
 import Home from './Components/Home/Home';
 import Main from './Components/Layout/Main';
 import AddService from './Components/Pages/AddService/AddService';
-import Services from './Components/Pages/AddService/Services/Services';
+
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
+import Services from './Components/Pages/Services/Services';
 
 
 
