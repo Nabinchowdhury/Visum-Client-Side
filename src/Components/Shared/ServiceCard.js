@@ -14,7 +14,7 @@ const ServiceCard = ({ service }) => {
                             <img src={photo} style={{ objectFit: 'cover' }} className='w-full' alt="" />
                         </PhotoView>
                     </PhotoProvider>
-                    {/* <img src={photo} alt="Shoes" className='w-full' /> */}
+
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title mx-auto">{serviceName}</h2>

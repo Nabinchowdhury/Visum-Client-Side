@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
+import ReviewCard from './ReviewCard';
 
 const ServiceDetails = () => {
     useTitle('Service Details')
@@ -75,7 +76,13 @@ const ServiceDetails = () => {
 
             <div className='my-32'>
                 <h2 className='text-4xl my-10'>Reviews</h2>
-                <div className='md:mx-32'>
+
+                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-32'>
+                    {
+                        reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
+                    }
+                </div>
+                <div className='md:mx-32 mt-16'>
                     {
                         user ? <form onSubmit={handleAddReview}>
                             <textarea name="review" className="textarea textarea-bordered h-24 w-full" placeholder="Add a Review" required></textarea>
@@ -85,11 +92,7 @@ const ServiceDetails = () => {
                     }
 
                 </div>
-                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-32'>
-                    {
-                        reviews.length
-                    }
-                </div>
+
 
             </div>
         </div>
