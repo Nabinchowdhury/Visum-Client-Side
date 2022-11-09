@@ -12,6 +12,7 @@ import MyReview from './Components/Pages/MyReview/MyReview';
 import ServiceDetails from './Components/Pages/ServiceDetails/ServiceDetails';
 import Services from './Components/Pages/Services/Services';
 import SignUp from './Components/Pages/SignUp/SignUp';
+import UpdateReview from './Components/Pages/UpdateReview/UpdateReview';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 
@@ -57,6 +58,11 @@ function App() {
         {
           path: "/signup",
           element: <SignUp></SignUp>
+        },
+        {
+          path: "/update/:id",
+          element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
+          loader: ({ params }) => { return fetch(`http://localhost:5000/reviews/${params.id}`) }
         },
       ]
     }

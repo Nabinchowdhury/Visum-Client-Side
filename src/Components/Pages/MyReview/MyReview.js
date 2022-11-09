@@ -26,18 +26,22 @@ const MyReview = () => {
 
     const handleDeleteReview = (id) => {
 
-        fetch(`http://localhost:5000/reviews/${id}`, {
-            method: "DELETE",
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    const remaining = reviews.filter(review => review._id !== id)
-                    setReviews(remaining)
-                }
-            })
+        const confirm = window.confirm("Are you sure?")
+        if (confirm) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: "DELETE",
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        const remaining = reviews.filter(review => review._id !== id)
+                        setReviews(remaining)
+                    }
+                })
+        }
+
     }
-    const handleUpdateReview = () => { }
+
 
 
 
@@ -45,15 +49,15 @@ const MyReview = () => {
     return (
         <div>
             <div>
-                <h2 className="text-5xl">You have Reviews</h2>
+                <h2 className="text-5xl">My Reviews</h2>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Service Name</th>
+                                <th>Review</th>
+                                <th>Operation</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,13 +66,13 @@ const MyReview = () => {
                                     key={review._id}
                                     review={review}
                                     handleDeleteReview={handleDeleteReview}
-                                    handleUpdateReview={handleUpdateReview}
-
                                 ></ReviewRow>)
                             }
                         </tbody>
                     </table>
                 </div>
+
+
             </div>
         </div>
     );

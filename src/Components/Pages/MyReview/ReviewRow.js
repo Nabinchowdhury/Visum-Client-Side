@@ -1,16 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ReviewRow = ({ review, handleUpdateReview, handleDeleteReview }) => {
-    console.log(review)
+const ReviewRow = ({ review, handleDeleteReview }) => {
+    // console.log(review)
     const { _id, serviceName, reviewMsg } = review
+
+
     return (
         <tr>
             <th></th>
             <td>{serviceName}</td>
             <td>{reviewMsg}</td>
             <td>
-                <button className='btn btn-info'>edit</button>
+
+                <Link to={`/update/${_id}`}><button className='btn btn-primary'>Edit</button></Link>
                 <button className='btn btn-error' onClick={() => { handleDeleteReview(_id) }}>delete</button></td>
+
+
+
         </tr>
     );
 };
