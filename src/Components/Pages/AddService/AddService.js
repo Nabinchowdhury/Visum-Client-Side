@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import useTitle from '../../Hooks/useTitle';
 
 const AddService = () => {
@@ -36,7 +37,7 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert(" Successfull")
+                    toast.success('Successfully added');
                     form.reset()
                 }
             }).catch(err => console.log(err))
