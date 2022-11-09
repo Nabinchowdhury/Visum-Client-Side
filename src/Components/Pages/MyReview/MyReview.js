@@ -24,8 +24,20 @@ const MyReview = () => {
             })
     }, [user?.email, logUserOut])
 
-    const handleDeleteOrder = () => { }
-    const handleUpdateStatus = () => { }
+    const handleDeleteReview = (id) => {
+
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    const remaining = reviews.filter(review => review._id !== id)
+                    setReviews(remaining)
+                }
+            })
+    }
+    const handleUpdateReview = () => { }
 
 
 
@@ -49,8 +61,8 @@ const MyReview = () => {
                                 reviews.map(review => <ReviewRow
                                     key={review._id}
                                     review={review}
-                                    handleDeleteOrder={handleDeleteOrder}
-                                    handleUpdateStatus={handleUpdateStatus}
+                                    handleDeleteReview={handleDeleteReview}
+                                    handleUpdateReview={handleUpdateReview}
 
                                 ></ReviewRow>)
                             }
