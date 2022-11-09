@@ -20,6 +20,7 @@ const SignUp = () => {
                 setSpinner(false)
             })
             .catch(err => console.log(err))
+            .finally(() => { setSpinner(false) })
     }, [])
 
     const handleSubmit = (e) => {

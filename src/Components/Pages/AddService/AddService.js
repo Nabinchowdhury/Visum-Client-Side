@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import useTitle from '../../Hooks/useTitle';
 
 const AddService = () => {
-    const currentdate = new Date()
+
     useTitle("Add Title")
     const email = "thomas@frantz.com"
 
@@ -16,7 +16,7 @@ const AddService = () => {
         const price = form.price.value
         const details = form.details.value;
 
-        const order = {
+        const service = {
 
             serviceName,
             price,
@@ -32,7 +32,7 @@ const AddService = () => {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(order)
+            body: JSON.stringify(service)
         })
             .then(res => res.json())
             .then(data => {
@@ -44,7 +44,8 @@ const AddService = () => {
     }
 
     return (
-        <div>
+        <div className='my-20 md:mx-32'>
+            <h2 className='text-4xl my-10'>Add a Service</h2>
             <form onSubmit={handleAddService}>
 
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>

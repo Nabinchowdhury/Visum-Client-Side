@@ -11,11 +11,7 @@ const jwtToken = async (currentUser) => {
     })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             localStorage.setItem("serviceReview-token", data.token)
-
-
-
         })
         .catch(err => console.log(err))
 };

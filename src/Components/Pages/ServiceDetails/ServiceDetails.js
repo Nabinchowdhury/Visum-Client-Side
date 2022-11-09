@@ -8,21 +8,30 @@ import ReviewCard from './ReviewCard';
 const ServiceDetails = () => {
     useTitle('Service Details')
     const service = useLoaderData()
-    const { user } = useContext(AuthContext)
+    const { user, logUserOut } = useContext(AuthContext)
 
     const { _id, serviceName, photo, price, details, providerName, email } = service
 
     const [reviews, setReviews] = useState([])
     console.log(reviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${_id}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/reviews?service=${_id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('serviceReview-token')}`
+            }
+        })
+            .then(res => {
+
+                if (res.status === 401 || res.status === 403) {
+                    return logUserOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 console.log(data)
                 setReviews(data)
             })
-            .catch(err => console.log(err))
-    }, [])
+    }, [_id, logUserOut])
 
     const handleAddReview = (e) => {
         e.preventDefault();

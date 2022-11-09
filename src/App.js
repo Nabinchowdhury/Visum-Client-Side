@@ -8,6 +8,7 @@ import AddService from './Components/Pages/AddService/AddService';
 
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Login from './Components/Pages/Login/Login';
+import MyReview from './Components/Pages/MyReview/MyReview';
 import ServiceDetails from './Components/Pages/ServiceDetails/ServiceDetails';
 import Services from './Components/Pages/Services/Services';
 import SignUp from './Components/Pages/SignUp/SignUp';
@@ -33,7 +34,9 @@ function App() {
         {
           path: "/services/:id",
           element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-          loader: ({ params }) => { return fetch(`http://localhost:5000/services/${params.id}`) }
+          loader: ({ params }) => {
+            return fetch(`http://localhost:5000/services/${params.id}`)
+          }
         },
         {
           path: "/blog",
@@ -42,6 +45,10 @@ function App() {
         {
           path: "/addService",
           element: <PrivateRoute><AddService></AddService></PrivateRoute>
+        },
+        {
+          path: "/myReview",
+          element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
         },
         {
           path: "/login",
