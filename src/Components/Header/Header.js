@@ -11,7 +11,7 @@ const Header = () => {
     }
     const routeItems = <><li className={`${user ? "" : "hidden"}`}><Link to="/myReview">My Review</Link></li>
         <li className={`${user ? "" : "hidden"}`}><Link to="/addService">Add Service</Link></li>
-        <li><Link>Blog</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
         <Link className={`${user ? "" : "hidden"}`}><button className='btn btn-outline btn-error rounded-lg ml-3' onClick={handleLogUserOut}>Log Out</button></Link></>
 
     return (
@@ -25,7 +25,7 @@ const Header = () => {
                         {routeItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-3xl">Visum</Link>
+                <Link className="btn btn-ghost normal-case text-3xl" to="/">Visum</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

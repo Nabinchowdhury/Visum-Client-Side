@@ -5,6 +5,7 @@ import './App.css';
 import Home from './Components/Home/Home';
 import Main from './Components/Layout/Main';
 import AddService from './Components/Pages/AddService/AddService';
+import Blogs from './Components/Pages/Blogs/Blogs';
 
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Login from './Components/Pages/Login/Login';
@@ -34,14 +35,14 @@ function App() {
         },
         {
           path: "/services/:id",
-          element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+          element: <ServiceDetails></ServiceDetails>,
           loader: ({ params }) => {
-            return fetch(`http://localhost:5000/services/${params.id}`)
+            return fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/services/${params.id}`)
           }
         },
         {
           path: "/blog",
-          element: <Home></Home>
+          element: <Blogs></Blogs>
         },
         {
           path: "/addService",
@@ -62,7 +63,7 @@ function App() {
         {
           path: "/update/:id",
           element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
-          loader: ({ params }) => { return fetch(`http://localhost:5000/reviews/${params.id}`) }
+          loader: ({ params }) => { return fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/reviews/${params.id}`) }
         },
       ]
     }

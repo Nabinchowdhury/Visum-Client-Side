@@ -18,18 +18,22 @@ import img14 from "../images/fashion-agency-6.jpg"
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import ServiceCard from '../Shared/ServiceCard';
 import { Link } from 'react-router-dom';
+import useTitle from '../Hooks/useTitle';
 const Home = () => {
     const images = [img1, img5, img11, img4, img2, img6, img7, img10, img3, img12, img13, img4, img9, img14]
 
     const [services, setServices] = useState([]);
     const [limit, setLimit] = useState(3)
+    useTitle("Home")
     useEffect(() => {
-        fetch(`http://localhost:5000/services?limit=${limit}`).then(res => res.json())
+        fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/services?limit=${limit}`).then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err))
-    }, [])
+    }, [limit])
     return (
         <div>
+
+            {/* Banner........... */}
             <div className="relative w-full my-10">
                 <div className='banner '>
                     <img src="https://fourstudio.in/img/photography.jpg" alt="" className='rounded-2xl' />
@@ -45,6 +49,7 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Services Card......... */}
             <div className='my-32'>
                 <h2 className='text-4xl my-10'>Services</h2>
                 <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-32'>
@@ -55,6 +60,8 @@ const Home = () => {
                 <Link to="/services" > <button className='btn btn-warning my-10 rounded-lg'>See All Services</button></Link>
             </div>
 
+
+            {/* Extra section 1............... */}
             <div>
                 <div className='my-10 font-serif'>
                     <p>My Latest Works</p>
@@ -73,7 +80,7 @@ const Home = () => {
                 </PhotoProvider>
             </div>
 
-
+            {/* Extra section 2.......... */}
             <div className='my-32'>
                 <h2 className='text-4xl my-10'>About</h2>
                 <div className="card lg:card-side bg-base-100 shadow-xl md:mx-32">

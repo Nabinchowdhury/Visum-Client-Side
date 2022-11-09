@@ -13,9 +13,9 @@ const ServiceDetails = () => {
     const { _id, serviceName, photo, price, details, providerName, email } = service
 
     const [reviews, setReviews] = useState([])
-    console.log(reviews)
+    // console.log(reviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${_id}`, {
+        fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/reviews?service=${_id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('serviceReview-token')}`
             }
@@ -28,7 +28,7 @@ const ServiceDetails = () => {
                 return res.json()
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setReviews(data)
             })
     }, [_id, logUserOut])
@@ -48,7 +48,7 @@ const ServiceDetails = () => {
             date: new Date()
         }
         // console.log(review)
-        fetch(`http://localhost:5000/addReview`, {
+        fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/addReview`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -82,7 +82,7 @@ const ServiceDetails = () => {
             </div>
 
 
-
+            {/* Reviews............. */}
             <div className='my-32'>
                 <h2 className='text-4xl my-10'>Reviews</h2>
 

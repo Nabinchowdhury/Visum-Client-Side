@@ -11,12 +11,13 @@ const UpdateReview = () => {
     const handleUpdateReview = (e) => {
         e.preventDefault();
         const reviewMsg = e.target.review.value;
-        console.log(reviewMsg)
+        // console.log(reviewMsg)
 
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/reviews/${_id}`, {
             method: "PATCH",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('serviceReview-token')}`
             },
             body: JSON.stringify({ reviewMsg })
         }).then(res => res.json())
