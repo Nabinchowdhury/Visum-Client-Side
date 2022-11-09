@@ -9,7 +9,7 @@ const ReviewCard = ({ review }) => {
         name } = review
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl border rounded-lg pt-3">
+            <div className="card card-compact w-auto bg-base-100 shadow-xl border rounded-lg pt-3">
                 <figure><div className="avatar">
                     <div className="w-24 rounded-full">
                         <img src={picture} alt='' />

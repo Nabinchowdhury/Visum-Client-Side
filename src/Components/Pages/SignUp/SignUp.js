@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import { RotatingLines } from 'react-loader-spinner';
+import jwtToken from '../../Jwt/jwtToken';
 
 const SignUp = () => {
     const { createNewUser, googleSignin, setLoading, updateUserProfile } = useContext(AuthContext)
@@ -34,15 +35,16 @@ const SignUp = () => {
         createNewUser(email, password)
             .then(result => {
                 const user = result.user
-                console.log("log in successfull", user)
                 form.reset()
                 updateUserProfile(profile)
                     .then(() => { })
                     .catch(() => { })
                 setError("")
                 setLoading(false)
-                toast.success('Successfully Signed in!');
-                navigate("/services")
+                const currentUser = {
+                    email: user.email
+                }
+                jwtToken(currentUser).then(navigate("/services"))
             })
             .catch(error => {
                 console.error(error)
@@ -57,8 +59,11 @@ const SignUp = () => {
         googleSignin()
             .then(result => {
                 const user = result.user
-                toast.success('Successfully Signed in!');
-                navigate("/services")
+                const currentUser = {
+                    email: user.email
+                }
+                jwtToken(currentUser).then(navigate("/services"))
+
             }).catch(error => {
                 setError(error.message)
                 toast.error('Sign in failed!');
