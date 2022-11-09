@@ -28,19 +28,7 @@ const Services = () => {
             </div>
 
 
-            <div className='my-32'>
-                <h2 className='text-4xl my-10'>Reviews</h2>
-                <form className='md:mx-32'>
-                    {
-                        user ? <textarea name="details" className="textarea textarea-bordered h-24 w-full" placeholder="Add a Review" required></textarea> : "Please login to add review"
-                    }
-                    <input className='btn' type="submit" value="Post" />
-                </form>
-                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-32'>
 
-                </div>
-
-            </div>
         </div>
     );
 };

@@ -8,6 +8,7 @@ import AddService from './Components/Pages/AddService/AddService';
 
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Login from './Components/Pages/Login/Login';
+import ServiceDetails from './Components/Pages/ServiceDetails/ServiceDetails';
 import Services from './Components/Pages/Services/Services';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
@@ -31,7 +32,8 @@ function App() {
         },
         {
           path: "/services/:id",
-          element: <Services></Services>
+          element: <ServiceDetails></ServiceDetails>,
+          loader: ({ params }) => { return fetch(`http://localhost:5000/services/${params.id}`) }
         },
         {
           path: "/blog",
