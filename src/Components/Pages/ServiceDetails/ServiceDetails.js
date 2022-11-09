@@ -15,7 +15,7 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     console.log(reviews)
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch(`http://localhost:5000/reviews?service=${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
