@@ -9,7 +9,7 @@ const Header = () => {
             .then(() => { })
             .catch(() => { })
     }
-    const routeItems = <><li className={`${user ? "" : "hidden"}`}><Link to="/myReview">My Review</Link></li>
+    const routeItems = <><li className={`${user ? "" : "hidden"}`}><Link to="/myReview">My Reviews</Link></li>
         <li className={`${user ? "" : "hidden"}`}><Link to="/addService">Add Service</Link></li>
         <li><Link to="/blog">Blog</Link></li>
         <Link className={`${user ? "" : "hidden"}`}><button className='btn btn-outline btn-error rounded-lg ml-3' onClick={handleLogUserOut}>Log Out</button></Link></>
