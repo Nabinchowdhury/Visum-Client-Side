@@ -15,23 +15,25 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     // console.log(reviews)
     useEffect(() => {
-        fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/reviews?service=${_id}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('serviceReview-token')}`
-            }
-        })
-            .then(res => {
-
-                if (res.status === 401 || res.status === 403) {
-                    return logUserOut()
+        if (user) {
+            fetch(`https://b6a11-service-review-server-side-nabinchowdhury.vercel.app/reviews?service=${_id}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('serviceReview-token')}`
                 }
-                return res.json()
             })
-            .then(data => {
-                // console.log(data)
-                setReviews(data)
-            })
-    }, [_id, logUserOut])
+                .then(res => {
+
+                    if (res.status === 401 || res.status === 403) {
+                        return logUserOut()
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    // console.log(data)
+                    setReviews(data)
+                })
+        }
+    }, [_id, logUserOut, user])
 
     const handleAddReview = (e) => {
         e.preventDefault();
